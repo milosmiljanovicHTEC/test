@@ -26,12 +26,12 @@ jobs:
     steps:
       - name : Echo
         if: | 
-          ${{ github.event_name == 'schedule' || ( github.event.action == 'closed' && github.event.pull_request.merged == true) }}
+          ${{ github.event_name == 'schedule' || ( github.event.action == 'closed' && github.event.pull_request.merged == true) }};then
         run: 
           echo "This is first case"
         fi  
       - name : echo 2
-        if : ${{ github.event_name == 'schedule' || ( github.event.action == 'closed' && github.event.pull_request.merged == true) }}
+        if : ${{ github.event_name == 'schedule' || ( github.event.action == 'closed' && github.event.pull_request.merged == true);then
         run : |
           echo "This is second echo"
         fi
