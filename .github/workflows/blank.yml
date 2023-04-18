@@ -32,4 +32,4 @@ jobs:
       - name : echo 2
         if : ${{ github.event_name == 'schedule' || ( github.event.action == 'closed' && github.event.pull_request.merged == true) }};then
         run : |
-          echo "This is second echo"
+          echo "This is second ecoooho"
