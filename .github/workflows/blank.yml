@@ -32,7 +32,9 @@ jobs:
         else :
         run: 
           echo "This is else case"    
+        fi  
       - name : echo 2
         if : ${{ github.event_name == 'schedule' || ( github.event.action == 'closed' && github.event.pull_request.merged == true) }}
         run : |
           echo "This is second echo"
+        fi
