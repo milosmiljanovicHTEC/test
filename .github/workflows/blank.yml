@@ -36,5 +36,5 @@ jobs:
       - name : echo 3
         if : ${{ github.event.action == 'closed' && github.event.pull_request.merged == true }}  
         run : |
-          echo "This is PR echo"        
+          echo "This is PR echop"        
 
