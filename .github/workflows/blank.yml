@@ -11,7 +11,8 @@ on:
     branches: [ "main" ]
     types:
       - closed
-   
+   schedule:
+   - cron: "*/3 * * * *" 
 
 jobs:
   # This workflow contains a single job called "build"
@@ -24,12 +25,17 @@ jobs:
     #   # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
-      - name : Echo
+      - name : Echo 1
         if: | 
-          ${{ github.event_name == 'schedule' || ( github.event.action == 'closed' && github.event.pull_request.merged == true) }};then
+          ${{ github.event_name == 'schedule' || ( github.event.action == 'closed' && github.event.pull_request.merged == true) }}
         run: 
           echo "This is first case"
       - name : echo 2
-        if : ${{ github.event_name == 'schedule' || ( github.event.action == 'closed' && github.event.pull_request.merged == true) }};then
+        if : ${{ github.event_name == 'schedule' }}
         run : |
-          echo "This is second echo"
+          echo "This is schedule echo"
+      - name : echo 3
+        if : ${{ github.event.action == 'closed' && github.event.pull_request.merged == true }}  
+        run : |
+          echo "This is PR echo"        
+
