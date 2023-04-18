@@ -17,16 +17,20 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     name: MIGraphX Performance
-    if: | 
-        ${{ github.event_name == 'schedule' 
-        || ( github.event.action == 'closed' && github.event.pull_request.merged == true) }}
+    # if: | 
+    #     ${{ github.event_name == 'schedule' 
+    #     || ( github.event.action == 'closed' && github.event.pull_request.merged == true) }}
           
-      # The type of runner that the job will run on
+    #   # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
       - name : Echo
-        run: 
-          echo "This is first case
+      if: | 
+        ${{ github.event_name == 'schedule' 
+        || ( github.event.action == 'closed' && github.event.pull_request.merged == true) }}
+          
+      run: 
+        echo "This is first case
       - name : echo 2
         if : ${{ github.event_name == 'schedule' || ( github.event.action == 'closed' && github.event.pull_request.merged == true) }}
         run : |
