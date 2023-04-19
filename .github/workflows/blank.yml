@@ -13,7 +13,8 @@ on:
       - closed
   # schedule:
   #  - cron: "*/3 * * * *" 
-
+env:
+  TEST_RESULTS_PATH: /usr/share/migraphx/test-results
 jobs:
   # This workflow contains a single job called "build"
   build:
@@ -42,3 +43,7 @@ jobs:
         if: ${{ github.event.action == 'closed' && github.event.pull_request.merged == true}} || ${{ github.event_name == 'schedule' }}   
         run : |
           echo  'ERROR '
+
+      - name: ENV-test
+        run: |
+          bash script.sh         
