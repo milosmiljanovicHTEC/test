@@ -45,5 +45,5 @@ jobs:
           echo  'ERROR '
 
       - name: ENV-test
-        run: |
-          bash script.sh         
+        run: ./script.sh
+                   
