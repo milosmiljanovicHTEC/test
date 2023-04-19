@@ -45,5 +45,5 @@ jobs:
           echo  'ERROR '
 
       - name: ENV-test
-        run: ./script.sh
+        run: ./$GITHUB_WORKSPACE/test/.github/workflows/script.sh
                    
