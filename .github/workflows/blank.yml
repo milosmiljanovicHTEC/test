@@ -43,8 +43,9 @@ jobs:
         if: ${{ github.event.action == 'closed' && github.event.pull_request.merged == true}} || ${{ github.event_name == 'schedule' }}   
         run : |
           echo  'ERROR '
-
+      - name: Checkout report's repo
+        uses: actions/checkout@v3
       - name: ENV-test
         run: |
-          pwd && ls -la
+          ./$GITHUB_WORKSPACE/test/.github/workflows/script.sh
                    
