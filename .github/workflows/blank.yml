@@ -1,16 +1,16 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+# name: CI
 
 
-on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-    types:
-      - closed
+# on:
+#   # Triggers the workflow on push or pull request events but only for the "main" branch
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
+#     types:
+#       - closed
   # schedule:
   #  - cron: "*/3 * * * *" 
 env:
