@@ -24,6 +24,9 @@ jobs:
           python_path="$(which python)"
           output=$(${python_path} ${{ github.workspace }}/mix.py -pr .github/workflows/README.md -py .github/workflows)
           echo "$output"  # Print captured output to the console
+          git add .
+          git commit -m "Change"
+          git push
 
       - name: Capture Output as Artifacts
         uses: actions/upload-artifact@v2
