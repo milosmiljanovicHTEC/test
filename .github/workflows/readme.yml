@@ -1,0 +1,31 @@
+name: Update README Workflow
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to the main branch name
+
+jobs:
+  update_readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Run Python Script
+        run: |
+          python_path="$(which python)"
+          output=$(${python_path} ${{ github.workspace }}/test/mix.py)
+          echo "$output"  # Print captured output to the console
+
+      - name: Capture Output as Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: script-output
+          path: test/output/
