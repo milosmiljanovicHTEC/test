@@ -22,7 +22,7 @@ jobs:
         run: |
           cd ${{ github.workspace }} && ls -la
           python_path="$(which python)"
-          output=$(${python_path} ${{ github.workspace }}/mix.py -pr workflows/README.md -py workflows)
+          output=$(${python_path} ${{ github.workspace }}/mix.py -pr .github/workflows/README.md -py .github/workflows)
           echo "$output"  # Print captured output to the console
 
       - name: Capture Output as Artifacts
