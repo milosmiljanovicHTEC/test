@@ -24,6 +24,8 @@ jobs:
           python_path="$(which python)"
           output=$(${python_path} ${{ github.workspace }}/mix.py -pr .github/workflows/README.md -py .github/workflows)
           echo "$output"  # Print captured output to the console
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
           git add .
           git commit -m "Change"
           git push
