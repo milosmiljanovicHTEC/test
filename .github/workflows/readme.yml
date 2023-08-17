@@ -20,6 +20,7 @@ jobs:
 
       - name: Run Python Script
         run: |
+          cd ${{ github.workspace }} && ls -la
           python_path="$(which python)"
           output=$(${python_path} ${{ github.workspace }}/mix.py)
           echo "$output"  # Print captured output to the console
