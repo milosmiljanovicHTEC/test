@@ -35,59 +35,6 @@ The following jobs are executed in the workflow:
 For more details, please refer to the [benchmarks.yml](https://github.com/migraphx-benchmark/actions/blob/main/.github/workflows/benchmarks.yml) file in the repository.
 
 ---
-## `history.yml`
-
-<p>
-This workflow analyzes the historical performance of the MIGraphX project by running a Python script that produces a report between two given dates. The results are uploaded to a Github repository and a link to the report is provided. The workflow requires several input parameters and access to Github credentials as secrets.
-</p>
-
-- ## Trigger
-> The workflow will be triggered on workflow dispatch event from caller workflow 
-[history_HTEC.yaml](https://github.com/migraphx-benchmark/AMDMIGraphX/blob/develop/.github/workflows/history_HTEC.yaml) 
-
-- ## Input Parameters
-
-> - `start_date`: Test25
-
-> - `end_date`: End date for results analysis#111111
-
-> - `benchmark_utils_repo`: Repository where benchmark utils are stored
-
-> - `organization`: Organization based on which location of files will be different
-
-> - `benchmark_utils11_repo`: Repository where benchmark utils are stored
-
-> - `TEST`: TEST
-
-- ## Environment Variables
-
->- `TEST_RESULTS_PATH`: 111111test
-
->- `UTILS_DIR`: 324tTEST24 
-
->- `BLA`: blaaaaa111111111
-
->- `REPORTS_PATH`: 321321321
-
->- `REPORTS2424_PATH`: 321321321TEST
-
-- ## Jobs
-The workflow has a single job named `performance_test`. The following steps are executed in this job:
-> - `Checkout code`: This step checks out the code for the MIGraphX project.
-
-> - `Checkout utils`: This step checks out the benchmark utilities repository specified by the user in the inputs. The repository is checked out to the `UTILS_DIR` directory using the `path` parameter.
-
-> - `Checkout report's repo`: This step checks out the repository where the historical analysis report will be stored. The repository is checked out to the `REPORTS_DIR` directory using the `path` parameter.
-
-> - `Run history script`: This step runs a Python script named `history.py` located in the `UTILS_DIR/scripts/` directory. The script takes the start and end dates specified by the user in the inputs, and the paths to the test results and reports directories specified in the environment variables, as command line arguments. The script generates a historical analysis report for the specified time period.
-
-> - `Upload history results`: This step copies the generated historical analysis report to the `REPORTS_DIR` directory and adds it to the Git repository. It then commits the changes with a message specifying the time period of the report and pushes the changes to the remote repository.
-
-> - `Get link to results repository`: This step prints a link to the historical analysis report repository specified in the inputs, which can be used to access the report.
-
-For more details, please refer to the [history.yml](https://github.com/migraphx-benchmark/actions/blob/main/.github/workflows/history.yml) file in the repository.
-
----
 
 ## `perf-test.yml`
 
