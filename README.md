@@ -11,22 +11,16 @@ This is a GitHub Actions workflow that benchmarks the performance of MiGraphX, a
 [benchmark.yaml](https://github.com/migraphx-benchmark/AMDMIGraphX/blob/develop/.github/workflows/benchmark.yaml) 
 
 - ## Input Parameters
-The workflow uses the following input parameters:
 
-> - `rocm_version`: The ROCm release version, which is a required parameter.
+> - `rocm_version`: 111
 
-> - `script_repo`: The script repository, which is an optional parameter.
+> - `script_repo`: 113213213
 
-> - `result_path`: The path where the result will be stored, which is an optional parameter.
-
-> - `result_repo`: The repository where the result will be stored, which is an optional parameter.
+> - `result_path`: R213
 
 - ## Environment Variables
-The workflow uses the following environment variables:
 
->- `SCRIPT_PATH`: The path to the script repository.
-
->- `RESULT_PATH`: The path to the result repository.
+>- `SCRIPT_PATH`: 111111
 
 - ## Jobs
 The following jobs are executed in the workflow:
@@ -41,105 +35,6 @@ The following jobs are executed in the workflow:
 For more details, please refer to the [benchmarks.yml](https://github.com/migraphx-benchmark/actions/blob/main/.github/workflows/benchmarks.yml) file in the repository.
 
 ---
-## `history.yml`
-
-<p>
-This workflow analyzes the historical performance of the MIGraphX project by running a Python script that produces a report between two given dates. The results are uploaded to a Github repository and a link to the report is provided. The workflow requires several input parameters and access to Github credentials as secrets.
-</p>
-
-- ## Trigger
-> The workflow will be triggered on workflow dispatch event from caller workflow 
-[history_HTEC.yaml](https://github.com/migraphx-benchmark/AMDMIGraphX/blob/develop/.github/workflows/history_HTEC.yaml) 
-
-- ## Input Parameters
-The workflow uses the following input parameters:
-> - `start_date`: The start date for the results analysis, which is a required parameter.
-
-> - `end_date`: The end date for the results analysis, which is a required parameter.
-
-> - `history_repo`: The repository where the history will be stored, which is a required parameter.
-
-> - `benchmark_utils_repo`: The repository where the benchmark utilities are stored, which is a required parameter.
-
-> - `organization`: The organization based on which the location of files will be different, which is a required parameter.
-
-- ## Environment Variables
-The workflow uses the following environment variables:
-
->- `TEST_RESULTS_PATH`: The path to the test results directory.
-
->- `UTILS_DIR`: The directory where the benchmark utilities are stored.
-
->- `REPORTS_DIR`: The directory where the reports will be stored.
-
->- `REPORTS_PATH`: The path to the reports directory.
-
-- ## Jobs
-The workflow has a single job named `performance_test`. The following steps are executed in this job:
-> - `Checkout code`: This step checks out the code for the MIGraphX project.
-
-> - `Checkout utils`: This step checks out the benchmark utilities repository specified by the user in the inputs. The repository is checked out to the `UTILS_DIR` directory using the `path` parameter.
-
-> - `Checkout report's repo`: This step checks out the repository where the historical analysis report will be stored. The repository is checked out to the `REPORTS_DIR` directory using the `path` parameter.
-
-> - `Run history script`: This step runs a Python script named `history.py` located in the `UTILS_DIR/scripts/` directory. The script takes the start and end dates specified by the user in the inputs, and the paths to the test results and reports directories specified in the environment variables, as command line arguments. The script generates a historical analysis report for the specified time period.
-
-> - `Upload history results`: This step copies the generated historical analysis report to the `REPORTS_DIR` directory and adds it to the Git repository. It then commits the changes with a message specifying the time period of the report and pushes the changes to the remote repository.
-
-> - `Get link to results repository`: This step prints a link to the historical analysis report repository specified in the inputs, which can be used to access the report.
-
-For more details, please refer to the [history.yml](https://github.com/migraphx-benchmark/actions/blob/main/.github/workflows/history.yml) file in the repository.
-
----
-
-## `miopen-db.yml`
-
-<p>
-This workflow generates an MIOPEN database by performing tuning tests and saving the results to a database.
-</p>
-
-- ## Trigger
-> The workflow will be triggered on workflow dispatch event from caller workflow 
-[miopen_database.yaml](https://github.com/migraphx-benchmark/AMDMIGraphX/blob/develop/.github/workflows/miopen_database.yaml) 
-
-- ## Input Parameters
-The workflow uses the following input parameters:
-
-> - `rocm_release`: The version of ROCm release, which is a required parameter.
-
-> - `miopen_db_repo`: The MIOpen Database repository, which is an optional parameter.
-
-> - `script_repo`: The script repository, which is an optional parameter.
-
-> - `saved_models_path`: The path to the saved models, which is an optional parameter.
-
-> - `test_results_dir`: The path to the test results directory, which is an optional parameter.
-
-- ## Environment Variables
-The workflow uses the following environment variables:
-
->- `ROCM_VERSION`: The version of the ROCm release.
-
->- `MIOPEN_PATH`: The path to the MIOpen database repository.
-
->- `SCRIPT_PATH`: The path to the script repository.
-
-- ## Jobs
-The following jobs are executed in the workflow:
-> - `check_gpu_name`: This job checks the name of the GPU being used and sets the output `gpu_name` to be used in subsequent jobs.
-
-> - `check_image_version`: This job checks if the Docker image `rocm-migraphx` for the specified `rocm_release` exists and sets the output `image` accordingly.
-
-> - `check_database`: This job checks if the database path exists for the specified GPU and ROCm release version, and sets the output `database` accordingly.
-
-> - `create_database`: This job creates the MIOpen database by performing tuning using `run_perf_mev.sh` script inside a Docker container with the necessary environment variables, mounted volumes and devices, and saves the resulting database to a directory on the host machine.
-
-> - `push_database`: This job pushes the created MIOpen database to the specified GitHub repository using Git commands, after creating a subdirectory with the name of the GPU in the version-specific directory.
-
-For more details, please refer to the [miopen-db.yml](https://github.com/migraphx-benchmark/actions/blob/main/.github/workflows/miopen-db.yml) file in the repository.
-
-
----
 
 ## `perf-test.yml`
 
@@ -152,55 +47,32 @@ Overall, this workflow is designed for running performance tests on the MIGraphX
 [performance_HTEC.yaml](https://github.com/migraphx-benchmark/AMDMIGraphX/blob/develop/.github/workflows/performance_HTEC.yaml) 
 
 - ## Input Parameters
-The workflow uses the following input parameters:
-> - `rocm_release`: The version of ROCm release, which is a required parameter.
 
-> - `performance_reports_repo`: The repository where the performance reports will be stored, which is a required parameter.
+> - `rocm_release`: ROCm release versionpesto sesto
 
-> - `benchmark_utils_repo`: The repository where the benchmark utilities are stored, which is a required parameter.
+> - `performance_reports_repo`: Result repository
 
-> - `organization`: The organization based on which the location of files will be different, which is a required parameter.
+> - `benchmark_utils_repo`: Repository where benchmark utils are stored312313123213
 
-> - `result_number`: The number of the last results, which is a required parameter.
+> - `organization`: Organization based on which location of files will be different 312312312312313
 
-> - `model_timeout`: If a model in the performance test script passes this threshold, it will be skipped. It's also required parameter.
+> - `result_number`: Number of last results
 
-> - `flags`: The flags used for performance testing, such as "-m" for Max value, "-s" for Std dev, or "-r 'path'" for the threshold file. It's also required parameter.
+> - `model_timeout`: If model in performance test script passes this threshold, it will be skipped32132131
 
-> - `performance_backup_repo`: The repository where the performance backups are stored, which is a required parameter.
+> - `flags`: -m for Max value; -s for Std dev; -r 'path' for Threshold file
+
+> - `performance_backup_repo`: Repository for backup
 
 - ## Environment Variables
-The workflow uses the following environment variables:
 
->- `UTILS_DIR`: The directory where the benchmark utilities are stored.
+>- `MAIL_TO`: 123
 
->- `REPORTS_DIR`: The directory where the performance test reports will be saved.
+>- `MAIL_FROM`: 5235235325235
 
->- `DOCKERBASE`: The base Docker image used to run the performance tests.
+>- `MAIL_SUBJECT`: 123
 
->- `MIOPENTUNE`: The path to the MiOpenTune directory.
-
->- `MAIL_TO`: The email address where the performance test results will be sent.
-
->- `MAIL_CC`: The email addresses that will receive a copy of the performance test results.
-
->- `MAIL_FROM`: The sender of the email that contains the performance test results.
-
->- `MAIL_SUBJECT`: The subject of the email that contains the performance test results.
-
->- `MAIL_BODY`: The body of the email that contains the performance test results.
-
->- `PR_ID`: The ID of the pull request that triggered the workflow.
-
->- `BRANCH_NAME`: The name of the branch that the pull request is targeting.
-
->- `REPORTS_PATH`: The path where the performance test reports will be saved.
-
->- `TEST_RESULTS_PATH`: The path where the test results will be saved.
-
->- `MIGRAPHX_PATH`: The path where the MIGraphX project is located.
-
->- `PERFORMANCE_DIR`: The directory where the previous performance test results are stored.
+>- `MAIL_BODY`: 123
 
 - ## Jobs
 The workflow has a single job named `performance_test`. The following steps are executed in this job:
@@ -245,10 +117,7 @@ The workflow has a single job named `performance_test`. The following steps are 
 
 > - `Clean closed PR data`: This step is similar to the previous step, but it runs a script to clean up data after a pull request is closed without being merged.
 
-
-
 For more details, please refer to the [perf-test.yml](https://github.com/migraphx-benchmark/actions/blob/main/.github/workflows/perf-test.yml) file in the repository.
-
 
 ---
 
@@ -263,25 +132,20 @@ This workflow automates the process of building a Docker image for the ROCm (Rad
 [rocm-image-release_HTEC.yaml](https://github.com/migraphx-benchmark/AMDMIGraphX/blob/develop/.github/workflows/rocm-image-release_HTEC.yaml) 
 
 - ## Input Parameters
-The workflow uses the following input parameters:
-> - `rocm_release`: The version of the ROCm software stack to be used in the Docker build, which is a required parameter.
 
-> - `benchmark-utils_repo`: The repository for the benchmark utilities that will be used in the build, which is a required parameter.
+> - `rocm_release`: ROCm release version2626262
 
-> - `organization`: The organization that the Docker image is being built for, which is a required parameter.
+> - `utils_repo`: Repository for benchmark utils05050
 
-> - `base_image`: The base image for the ROCm Docker build, which is a required parameter.
+> - `base_image`: Base image for rocm Docker buildfhfg
 
-> - `docker_image`: The name of the Docker image that will be created, which is a required parameter.
+> - `docker_image`: Docker image name for rocm Docker buildhfgf
 
-> - `build_navi`: The build number for the Navi GPU architecture, which is a required parameter.
-
-> - `overwrite`: A flag to determine whether to overwrite the Docker image if it already exists, which is a required parameter.
+> - `build_navi`: Build navi numberhfgh
 
 - ## Environment Variables
-The workflow uses only one environment variable:
 
->- `UTILS_DIR`: The directory where the benchmark utilities repository will be checked out during the Docker build process.
+>- `daad`: 4234234
 
 - ## Jobs
 The following jobs are executed in the workflow:
@@ -290,6 +154,5 @@ The following jobs are executed in the workflow:
 > - `build_image`: This job builds the ROCm Docker image if the `check_image_version` job determined that a new image needs to be built. This job checks out the benchmark utilities repository, sets environment variables based on the input parameters, and runs a script to build the Docker image.
 
 For more details, please refer to the [rocm-release.yml](https://github.com/migraphx-benchmark/actions/blob/main/.github/workflows/rocm-release.yml) file in the repository.
-
 
 ---
