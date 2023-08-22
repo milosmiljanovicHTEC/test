@@ -14,8 +14,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        # with:
-        #   token: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          token: ${{ secrets.WORKFLOW_TOKEN }}
 
 
       - name: Set up Python
@@ -27,7 +27,7 @@ jobs:
         run: |
           cd ${{ github.workspace }} && ls -la
           python_path="$(which python)"
-          output=$(${python_path} ${{ github.workspace }}/mix.py -pr .github/README.md -py .github/workflows)
+          output=$(${python_path} ${{ github.workspace }}/mix.py -pr .github/workflows/README.md -py .github/workflows)
           echo "$output"  # Print captured output to the console
           git config --global user.email "milos.miljanovic@htecgroup.com"
           git config --global user.name "Milos Miljanovic"
